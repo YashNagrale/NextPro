@@ -6,6 +6,7 @@ import { Suspense } from "react";
 
 // export const dynamic = "force-static";
 // export const revalidate = 30;
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Blog | Explore blogs",
