@@ -2,6 +2,7 @@ import BlogList, { SkeletonLoadingUi } from "@/components/web/BlogList";
 import { api } from "@/convex/_generated/api";
 import { fetchQuery } from "convex/nextjs";
 import { Metadata } from "next";
+import { connection } from "next/server";
 import { Suspense } from "react";
 
 // export const dynamic = "force-static";
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
+  await connection();
   const posts = await fetchQuery(api.posts.getPosts);
   return (
     <div className="py-12">
