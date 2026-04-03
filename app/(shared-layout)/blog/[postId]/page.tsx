@@ -12,6 +12,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getToken } from "@/lib/auth-server";
 import { notFound, redirect } from "next/navigation";
+import { ReactNode } from "react";
 
 interface postIdRouteParams {
   params: Promise<{
@@ -37,7 +38,9 @@ export async function generateMetadata({
   };
 }
 
-export default async function PostIdRoute({ params }: postIdRouteParams) {
+export default async function PostIdRoute({
+  params,
+}: postIdRouteParams): Promise<ReactNode> {
   const { postId } = await params;
   const token = await getToken();
 
