@@ -58,7 +58,7 @@ export function Navbar() {
                 fetchOptions: {
                   onSuccess: () => {
                     toast.success("logged out successfully");
-                    window.location.href = "/auth/login";
+                    window.location.href = "/";
                   },
                   onError: (error) => {
                     toast.error(error.error.message);
