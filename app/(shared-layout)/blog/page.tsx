@@ -13,9 +13,7 @@ export const metadata: Metadata = {
   description: "Find the rarest blogs here",
 };
 
-export default async function BlogPage() {
-  await connection();
-  const posts = await fetchQuery(api.posts.getPosts);
+export default function BlogPage() {
   return (
     <div className="py-12">
       <div className="pb-12 text-center">
@@ -27,8 +25,15 @@ export default async function BlogPage() {
         </p>
       </div>
       <Suspense fallback={<SkeletonLoadingUi />}>
-        <BlogList posts={posts} />
+        <BlogDataFetcher />
       </Suspense>
     </div>
   );
+}
+
+async function BlogDataFetcher() {
+  await connection(); // This tells Next.js the fetch is dynamic
+  const posts = await fetchQuery(api.posts.getPosts);
+
+  return <BlogList posts={posts} />;
 }
