@@ -5,7 +5,6 @@ import Link from "next/link";
 import { buttonVariants } from "../ui/button";
 import { Skeleton } from "../ui/skeleton";
 import { Doc } from "@/convex/_generated/dataModel";
-import { connection } from "next/server";
 
 type PostWithImageUrl = Doc<"posts"> & { imageUrl: string | null };
 
@@ -17,8 +16,6 @@ export default async function BlogList({
   "use cache";
   cacheLife("hours");
   cacheTag("blog");
-
-  // await connection();
 
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
