@@ -26,7 +26,9 @@ export async function generateMetadata({
   const post = await fetchQuery(api.posts.getPostById, { postId });
 
   if (!post) {
-    notFound();
+    return {
+      title: "Post not found",
+    };
   }
 
   return {
@@ -53,9 +55,7 @@ export default async function PostIdRoute({ params }: postIdRouteParams) {
   }
 
   if (!post) {
-    return {
-      title: "Post not found",
-    };
+    return notFound();
   }
 
   return (
