@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 import { fetchQuery } from "convex/nextjs";
 import { api } from "@/convex/_generated/api";
 import { Suspense } from "react";
-import BlogList, { SkeletonLoadingUi } from "@/components/web/BlogSection";
+import BlogList, { SkeletonLoadingUi } from "@/components/web/BlogList";
 import { connection } from "next/server";
 import { getToken } from "@/lib/auth-server";
 

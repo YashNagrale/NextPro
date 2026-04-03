@@ -1,4 +1,4 @@
-import BlogList, { SkeletonLoadingUi } from "@/components/web/BlogSection";
+import BlogList, { SkeletonLoadingUi } from "@/components/web/BlogList";
 import { api } from "@/convex/_generated/api";
 import { fetchQuery } from "convex/nextjs";
 import { Metadata } from "next";
