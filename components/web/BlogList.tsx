@@ -14,11 +14,11 @@ export default async function BlogList({
 }: {
   posts: PostWithImageUrl[];
 }) {
-  // "use cache";
-  // cacheLife("hours");
-  // cacheTag("blog");
+  "use cache";
+  cacheLife("hours");
+  cacheTag("blog");
 
-  await connection();
+  // await connection();
 
   return (
     <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
