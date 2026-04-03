@@ -1,198 +1,314 @@
 @import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
 
+:root {
+  /* =====================
+     BACKGROUNDS & SURFACES
+     ===================== */
+  --background: oklch(0.9791 0 0); /* cool off-white — not harsh pure white */
+  --foreground: oklch(0.0847 0 0); /* near black text */
+
+  --card: oklch(0.9911 0 0); /* cards slightly lighter than bg — lifts off */
+  --card-foreground: oklch(0.0847 0 0);
+
+  --popover: oklch(0.9911 0 0); /* same as card */
+  --popover-foreground: oklch(0.0847 0 0);
+
+  /* =====================
+     PRIMARY — main buttons, key actions
+     ===================== */
+  --primary: oklch(0.1822 0 0); /* near black */
+  --primary-foreground: oklch(
+    0.98 0 0
+  ); /* off-white text on dark button — not pure white */
+
+  /* =====================
+     SECONDARY — secondary buttons
+     ===================== */
+  --secondary: oklch(
+    0.9189 0 0
+  ); /* light grey — visible against off-white bg */
+  --secondary-foreground: oklch(0.1822 0 0);
+
+  /* =====================
+     MUTED — subtle backgrounds, disabled states
+     ===================== */
+  --muted: oklch(
+    0.92 0 0
+  ); /* FIXED: Darkened slightly so it doesn't vanish into the background */
+  --muted-foreground: oklch(0.4604 0 0); /* helper text, placeholders */
+
+  /* =====================
+     ACCENT — hover states, active items
+     ===================== */
+  --accent: oklch(0.8792 0 0); /* clearly visible hover on off-white bg */
+  --accent-foreground: oklch(0.1822 0 0);
+
+  /* =====================
+     DESTRUCTIVE — errors, delete actions
+     ===================== */
+  --destructive: oklch(0.629 0.1902 23.0704);
+  --destructive-foreground: oklch(0.98 0 0); /* off-white text on red button */
+
+  /* =====================
+    BORDERS & INPUTS
+     ===================== */
+
+  --border: oklch(0.8512 0 0); /* visible on off-white background */
+
+  /* input bg — sits naturally on page */
+  --input: oklch(
+    0.8512 0 0
+  ); /* FIXED: Matched to border so input outlines are visible */
+  --ring: oklch(0.3485 0 0); /* focus ring — dark, high contrast */
+
+  /* =====================
+    CHARTS
+     ===================== */
+  --chart-1: oklch(0.8088 0.1699 75.2344);
+  --chart-2: oklch(0.5499 0.2197 264.4382);
+  --chart-3: oklch(0.7187 0 0);
+  --chart-4: oklch(0.9189 0 0);
+  --chart-5: oklch(0.559 0 0);
+
+  /* =====================
+    SIDEBAR
+     ===================== */
+  --sidebar: oklch(0.9551 0 0); /* clearly distinct from main bg */
+  --sidebar-foreground: oklch(0.0847 0 0);
+  --sidebar-primary: oklch(0.1822 0 0);
+  --sidebar-primary-foreground: oklch(
+    0.98 0 0
+  ); /* off-white text on dark sidebar active item */
+  --sidebar-accent: oklch(0.8792 0 0);
+  --sidebar-accent-foreground: oklch(0.1822 0 0);
+  --sidebar-border: oklch(0.8792 0 0);
+  --sidebar-ring: oklch(0.3485 0 0);
+
+  /* =====================
+    TYPOGRAPHY
+     ===================== */
+  --font-sans: Geist, sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: Geist Mono, monospace;
+  --tracking-normal: 0em;
+
+  /* =====================
+    RADIUS SYSTEM
+    Nested radius formula:
+    inner radius = outer radius - padding
+    Use smaller radius for elements
+    nested inside larger containers
+     ===================== */
+  --radius: 0.5rem; /* 8px — base radius */
+  --radius-xs: calc(
+    var(--radius) - 5px
+  ); /* 3px — deeply nested elements, inputs inside cards */
+  --radius-sm: calc(
+    var(--radius) - 4px
+  ); /* 4px — inner elements with 8px padding from edge */
+  --radius-md: calc(
+    var(--radius) - 2px
+  ); /* 6px — inner elements with 4px padding from edge */
+  --radius-lg: var(--radius); /* 8px — cards, modals, main containers */
+  --radius-xl: calc(var(--radius) + 4px); /* 12px — large containers, panels */
+  --radius-2xl: calc(
+    var(--radius) + 8px
+  ); /* 16px — hero sections, page level containers */
+  --radius-full: 9999px; /* pills, badges, fully rounded */
+
+  /* =====================
+     SPACING
+     Base unit: 4px
+     All spacing should be multiples of 4px
+     ===================== */
+  --spacing: 0.25rem; /* 4px */
+
+  /* =====================
+     SHADOW SYSTEM
+     Each step clearly different from previous
+     No duplicate values
+     ===================== */
+  --shadow-2xs: 0px 1px 2px 0px hsl(0 0% 0% / 0.05);
+  --shadow-xs: 0px 1px 2px 0px hsl(0 0% 0% / 0.09);
+  --shadow-sm:
+    0px 1px 3px 0px hsl(0 0% 0% / 0.12), 0px 1px 2px -1px hsl(0 0% 0% / 0.12);
+  --shadow:
+    0px 2px 4px 0px hsl(0 0% 0% / 0.15), 0px 1px 2px -1px hsl(0 0% 0% / 0.15);
+  --shadow-md:
+    0px 4px 6px -1px hsl(0 0% 0% / 0.15), 0px 2px 4px -2px hsl(0 0% 0% / 0.15);
+  --shadow-lg:
+    0px 10px 15px -3px hsl(0 0% 0% / 0.15), 0px 4px 6px -4px hsl(0 0% 0% / 0.15);
+  --shadow-xl:
+    0px 20px 25px -5px hsl(0 0% 0% / 0.15),
+    0px 8px 10px -6px hsl(0 0% 0% / 0.15);
+  --shadow-2xl: 0px 25px 50px -12px hsl(0 0% 0% / 0.25);
+}
+
+/* =====================
+   DARK MODE
+   ===================== */
+.dark {
+  --background: oklch(
+    0.1344 0 0
+  ); /* dark grey — not pure black, easier on eyes */
+  --foreground: oklch(0.9702 0 0); /* off-white text — not pure white */
+
+  --card: oklch(0.1822 0 0); /* clearly lifts off dark background */
+  --card-foreground: oklch(0.9702 0 0);
+
+  --popover: oklch(0.1913 0 0); /* slightly lighter than card */
+  --popover-foreground: oklch(0.9702 0 0);
+
+  --primary: oklch(0.9702 0 0); /* off-white button in dark mode */
+  --primary-foreground: oklch(0.1344 0 0);
+
+  --secondary: oklch(0.2393 0 0);
+  --secondary-foreground: oklch(0.9702 0 0);
+
+  --muted: oklch(0.2221 0 0);
+  --muted-foreground: oklch(0.6797 0 0); /* readable helper text in dark */
+
+  --accent: oklch(0.2891 0 0); /* clearly visible hover on dark bg */
+  --accent-foreground: oklch(0.9702 0 0);
+
+  --destructive: oklch(0.6897 0.1998 23.9818);
+  --destructive-foreground: oklch(0 0 0);
+
+  --border: oklch(0.2393 0 0);
+  --input: oklch(
+    0.2393 0 0
+  ); /* FIXED: Matched to border for consistent visibility */
+  --ring: oklch(0.5999 0 0);
+
+  --chart-1: oklch(0.8088 0.1699 75.2344);
+  --chart-2: oklch(0.5811 0.21 260.8318);
+  --chart-3: oklch(0.559 0 0);
+  --chart-4: oklch(0.4386 0 0);
+  --chart-5: oklch(0.9189 0 0);
+
+  --sidebar: oklch(
+    0.1221 0 0
+  ); /* darker than bg — clear separation like Linear */
+  --sidebar-foreground: oklch(0.9702 0 0);
+  --sidebar-primary: oklch(0.9702 0 0);
+  --sidebar-primary-foreground: oklch(0.1344 0 0);
+  --sidebar-accent: oklch(0.2891 0 0);
+  --sidebar-accent-foreground: oklch(0.9702 0 0);
+  --sidebar-border: oklch(0.2393 0 0);
+  --sidebar-ring: oklch(0.5999 0 0);
+
+  /* =====================
+     DARK MODE SHADOWS
+     Stronger opacity — dark surfaces need more depth contrast
+     ===================== */
+  --shadow-2xs: 0px 1px 2px 0px hsl(0 0% 0% / 0.2);
+  --shadow-xs: 0px 1px 2px 0px hsl(0 0% 0% / 0.25);
+  --shadow-sm:
+    0px 1px 3px 0px hsl(0 0% 0% / 0.3), 0px 1px 2px -1px hsl(0 0% 0% / 0.3);
+  --shadow:
+    0px 2px 4px 0px hsl(0 0% 0% / 0.35), 0px 1px 2px -1px hsl(0 0% 0% / 0.35);
+  --shadow-md:
+    0px 4px 6px -1px hsl(0 0% 0% / 0.35), 0px 2px 4px -2px hsl(0 0% 0% / 0.35);
+  --shadow-lg:
+    0px 10px 15px -3px hsl(0 0% 0% / 0.4), 0px 4px 6px -4px hsl(0 0% 0% / 0.4);
+  --shadow-xl:
+    0px 20px 25px -5px hsl(0 0% 0% / 0.4), 0px 8px 10px -6px hsl(0 0% 0% / 0.4);
+  --shadow-2xl: 0px 25px 50px -12px hsl(0 0% 0% / 0.5);
+}
+
+/* =====================
+   THEME MAPPING
+   Maps CSS variables to Tailwind color utilities
+   ===================== */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --font-heading: var(--font-sans);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
-  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --radius: 0.5rem;
-  --tracking-tighter: calc(var(--tracking-normal) - 0.05em);
-  --tracking-tight: calc(var(--tracking-normal) - 0.025em);
-  --tracking-wide: calc(var(--tracking-normal) + 0.025em);
-  --tracking-wider: calc(var(--tracking-normal) + 0.05em);
-  --tracking-widest: calc(var(--tracking-normal) + 0.1em);
-  --tracking-normal: var(--tracking-normal);
-  --shadow-2xl: var(--shadow-2xl);
-  --shadow-xl: var(--shadow-xl);
-  --shadow-lg: var(--shadow-lg);
-  --shadow-md: var(--shadow-md);
-  --shadow: var(--shadow);
-  --shadow-sm: var(--shadow-sm);
-  --shadow-xs: var(--shadow-xs);
-  --shadow-2xs: var(--shadow-2xs);
-  --spacing: var(--spacing);
-  --letter-spacing: var(--letter-spacing);
-  --shadow-offset-y: var(--shadow-offset-y);
-  --shadow-offset-x: var(--shadow-offset-x);
-  --shadow-spread: var(--shadow-spread);
-  --shadow-blur: var(--shadow-blur);
-  --shadow-opacity: var(--shadow-opacity);
-  --color-shadow-color: var(--shadow-color);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
+
+  /* Radius scale — use smaller values for nested elements */
+  --radius-xs: var(--radius-xs);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+  --radius-2xl: var(--radius-2xl);
+  --radius-full: var(--radius-full);
+
+  --shadow-2xs: var(--shadow-2xs);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow: var(--shadow);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+  --shadow-2xl: var(--shadow-2xl);
 }
 
-:root {
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-  --destructive-foreground: oklch(1.0000 0 0);
-  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --shadow-color: oklch(0 0 0);
-  --shadow-opacity: 0.1;
-  --shadow-blur: 3px;
-  --shadow-spread: 0px;
-  --shadow-offset-x: 0;
-  --shadow-offset-y: 1px;
-  --letter-spacing: 0em;
-  --spacing: 0.25rem;
-  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
-  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
-  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
-  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
-  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
-  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
-  --tracking-normal: 0em;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-}
-
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
-  --destructive-foreground: oklch(1.0000 0 0);
-  --radius: 0.5rem;
-  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  --shadow-color: oklch(0 0 0);
-  --shadow-opacity: 0.1;
-  --shadow-blur: 3px;
-  --shadow-spread: 0px;
-  --shadow-offset-x: 0;
-  --shadow-offset-y: 1px;
-  --letter-spacing: 0em;
-  --spacing: 0.25rem;
-  --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
-  --shadow-sm: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
-  --shadow: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 1px 2px -1px hsl(0 0% 0% / 0.10);
-  --shadow-md: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 2px 4px -1px hsl(0 0% 0% / 0.10);
-  --shadow-lg: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 4px 6px -1px hsl(0 0% 0% / 0.10);
-  --shadow-xl: 0 1px 3px 0px hsl(0 0% 0% / 0.10), 0 8px 10px -1px hsl(0 0% 0% / 0.10);
-  --shadow-2xl: 0 1px 3px 0px hsl(0 0% 0% / 0.25);
-}
-
+/* =====================
+   BASE STYLES
+   ===================== */
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
-    letter-spacing: var(--tracking-normal);
+    /* Smooth dark/light mode transition */
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease;
+    /* Better font rendering */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
+
+  /* Smooth scrolling */
   html {
-    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+
+  /* Text selection — subtle grey instead of browser default blue */
+  /* ::selection {
+    background-color: oklch(0.35 0 0 / 0.15);
+    color: var(--foreground);
+  } */
+  ::selection {
+    @apply bg-primary text-primary-foreground;
   }
 }
