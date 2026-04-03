@@ -11,7 +11,7 @@ const nextConfig: NextConfig = {
         port: "",
       },
       {
-        hostname: "shiny-pigeon-737.convex.cloud",
+        hostname: "knowing-lyrebird-975.convex.cloud",
         protocol: "https",
         port: "",
       },
