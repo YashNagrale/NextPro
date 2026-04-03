@@ -10,6 +10,7 @@ import { ArrowLeft } from "lucide-react";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { connection } from "next/server";
 import { getToken } from "@/lib/auth-server";
 import { notFound, redirect } from "next/navigation";
 import { ReactNode } from "react";
@@ -41,6 +42,7 @@ export async function generateMetadata({
 export default async function PostIdRoute({
   params,
 }: postIdRouteParams): Promise<ReactNode> {
+  await connection();
   const { postId } = await params;
   const token = await getToken();
 
