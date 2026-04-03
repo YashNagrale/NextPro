@@ -11,7 +11,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { getToken } from "@/lib/auth-server";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
 interface postIdRouteParams {
   params: Promise<{
@@ -26,9 +26,7 @@ export async function generateMetadata({
   const post = await fetchQuery(api.posts.getPostById, { postId });
 
   if (!post) {
-    return {
-      title: "Post not found",
-    };
+    notFound();
   }
 
   return {
