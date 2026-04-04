@@ -49,7 +49,8 @@ export default function SignUpPage() {
         fetchOptions: {
           onSuccess: () => {
             toast.success("Account created successfully");
-            router.push("/");
+            // router.push("/");
+            window.location.href = "/";
           },
           onError: (error) => {
             toast.error(error.error.message);
