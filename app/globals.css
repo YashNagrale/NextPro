@@ -3,133 +3,65 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* =====================
-     BACKGROUNDS & SURFACES
-     ===================== */
-  --background: oklch(0.9791 0 0); /* cool off-white — not harsh pure white */
-  --foreground: oklch(0.0847 0 0); /* near black text */
+  --background: oklch(0.9791 0 0);
+  --foreground: oklch(0.0847 0 0);
 
-  --card: oklch(0.9911 0 0); /* cards slightly lighter than bg — lifts off */
+  --card: oklch(0.9911 0 0);
   --card-foreground: oklch(0.0847 0 0);
 
-  --popover: oklch(0.9911 0 0); /* same as card */
+  --popover: oklch(0.9911 0 0);
   --popover-foreground: oklch(0.0847 0 0);
 
-  /* =====================
-     PRIMARY — main buttons, key actions
-     ===================== */
-  --primary: oklch(0.1822 0 0); /* near black */
-  --primary-foreground: oklch(
-    0.98 0 0
-  ); /* off-white text on dark button — not pure white */
+  --primary: oklch(0.1822 0 0);
+  --primary-foreground: oklch(0.98 0 0);
 
-  /* =====================
-     SECONDARY — secondary buttons
-     ===================== */
-  --secondary: oklch(
-    0.9189 0 0
-  ); /* light grey — visible against off-white bg */
+  --secondary: oklch(0.9189 0 0);
   --secondary-foreground: oklch(0.1822 0 0);
 
-  /* =====================
-     MUTED — subtle backgrounds, disabled states
-     ===================== */
-  --muted: oklch(
-    0.92 0 0
-  ); /* FIXED: Darkened slightly so it doesn't vanish into the background */
-  --muted-foreground: oklch(0.4604 0 0); /* helper text, placeholders */
+  --muted: oklch(0.92 0 0);
+  --muted-foreground: oklch(0.4604 0 0);
 
-  /* =====================
-     ACCENT — hover states, active items
-     ===================== */
-  --accent: oklch(0.8792 0 0); /* clearly visible hover on off-white bg */
+  --accent: oklch(0.8792 0 0);
   --accent-foreground: oklch(0.1822 0 0);
 
-  /* =====================
-     DESTRUCTIVE — errors, delete actions
-     ===================== */
   --destructive: oklch(0.629 0.1902 23.0704);
-  --destructive-foreground: oklch(0.98 0 0); /* off-white text on red button */
+  --destructive-foreground: oklch(0.98 0 0);
 
-  /* =====================
-    BORDERS & INPUTS
-     ===================== */
+  --border: oklch(0.8512 0 0);
+  --input: oklch(0.8512 0 0);
+  --ring: oklch(0.3485 0 0);
 
-  --border: oklch(0.8512 0 0); /* visible on off-white background */
-
-  /* input bg — sits naturally on page */
-  --input: oklch(
-    0.8512 0 0
-  ); /* FIXED: Matched to border so input outlines are visible */
-  --ring: oklch(0.3485 0 0); /* focus ring — dark, high contrast */
-
-  /* =====================
-    CHARTS
-     ===================== */
   --chart-1: oklch(0.8088 0.1699 75.2344);
   --chart-2: oklch(0.5499 0.2197 264.4382);
   --chart-3: oklch(0.7187 0 0);
   --chart-4: oklch(0.9189 0 0);
   --chart-5: oklch(0.559 0 0);
 
-  /* =====================
-    SIDEBAR
-     ===================== */
-  --sidebar: oklch(0.9551 0 0); /* clearly distinct from main bg */
+  --sidebar: oklch(0.9551 0 0);
   --sidebar-foreground: oklch(0.0847 0 0);
   --sidebar-primary: oklch(0.1822 0 0);
-  --sidebar-primary-foreground: oklch(
-    0.98 0 0
-  ); /* off-white text on dark sidebar active item */
+  --sidebar-primary-foreground: oklch(0.98 0 0);
   --sidebar-accent: oklch(0.8792 0 0);
   --sidebar-accent-foreground: oklch(0.1822 0 0);
   --sidebar-border: oklch(0.8792 0 0);
   --sidebar-ring: oklch(0.3485 0 0);
 
-  /* =====================
-    TYPOGRAPHY
-     ===================== */
   --font-sans: Geist, sans-serif;
   --font-serif: Georgia, serif;
   --font-mono: Geist Mono, monospace;
   --tracking-normal: 0em;
 
-  /* =====================
-    RADIUS SYSTEM
-    Nested radius formula:
-    inner radius = outer radius - padding
-    Use smaller radius for elements
-    nested inside larger containers
-     ===================== */
-  --radius: 0.5rem; /* 8px — base radius */
-  --radius-xs: calc(
-    var(--radius) - 5px
-  ); /* 3px — deeply nested elements, inputs inside cards */
-  --radius-sm: calc(
-    var(--radius) - 4px
-  ); /* 4px — inner elements with 8px padding from edge */
-  --radius-md: calc(
-    var(--radius) - 2px
-  ); /* 6px — inner elements with 4px padding from edge */
-  --radius-lg: var(--radius); /* 8px — cards, modals, main containers */
-  --radius-xl: calc(var(--radius) + 4px); /* 12px — large containers, panels */
-  --radius-2xl: calc(
-    var(--radius) + 8px
-  ); /* 16px — hero sections, page level containers */
-  --radius-full: 9999px; /* pills, badges, fully rounded */
+  --radius: 0.5rem;
+  --radius-xs: calc(var(--radius) - 5px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-full: 9999px;
 
-  /* =====================
-     SPACING
-     Base unit: 4px
-     All spacing should be multiples of 4px
-     ===================== */
-  --spacing: 0.25rem; /* 4px */
+  --spacing: 0.25rem;
 
-  /* =====================
-     SHADOW SYSTEM
-     Each step clearly different from previous
-     No duplicate values
-     ===================== */
   --shadow-2xs: 0px 1px 2px 0px hsl(0 0% 0% / 0.05);
   --shadow-xs: 0px 1px 2px 0px hsl(0 0% 0% / 0.09);
   --shadow-sm:
@@ -146,41 +78,34 @@
   --shadow-2xl: 0px 25px 50px -12px hsl(0 0% 0% / 0.25);
 }
 
-/* =====================
-   DARK MODE
-   ===================== */
 .dark {
-  --background: oklch(
-    0.1344 0 0
-  ); /* dark grey — not pure black, easier on eyes */
-  --foreground: oklch(0.9702 0 0); /* off-white text — not pure white */
+  --background: oklch(0.155 0 0);
+  --foreground: oklch(0.95 0 0);
 
-  --card: oklch(0.1822 0 0); /* clearly lifts off dark background */
-  --card-foreground: oklch(0.9702 0 0);
+  --card: oklch(0.195 0 0);
+  --card-foreground: oklch(0.95 0 0);
 
-  --popover: oklch(0.1913 0 0); /* slightly lighter than card */
-  --popover-foreground: oklch(0.9702 0 0);
+  --popover: oklch(0.215 0 0);
+  --popover-foreground: oklch(0.95 0 0);
 
-  --primary: oklch(0.9702 0 0); /* off-white button in dark mode */
-  --primary-foreground: oklch(0.1344 0 0);
+  --primary: oklch(0.95 0 0);
+  --primary-foreground: oklch(0.155 0 0);
 
-  --secondary: oklch(0.2393 0 0);
-  --secondary-foreground: oklch(0.9702 0 0);
+  --secondary: oklch(0.245 0 0);
+  --secondary-foreground: oklch(0.95 0 0);
 
-  --muted: oklch(0.2221 0 0);
-  --muted-foreground: oklch(0.6797 0 0); /* readable helper text in dark */
+  --muted: oklch(0.225 0 0);
+  --muted-foreground: oklch(0.62 0 0);
 
-  --accent: oklch(0.2891 0 0); /* clearly visible hover on dark bg */
-  --accent-foreground: oklch(0.9702 0 0);
+  --accent: oklch(0.275 0 0);
+  --accent-foreground: oklch(0.95 0 0);
 
   --destructive: oklch(0.6897 0.1998 23.9818);
-  --destructive-foreground: oklch(0 0 0);
+  --destructive-foreground: oklch(0.97 0 0);
 
-  --border: oklch(0.2393 0 0);
-  --input: oklch(
-    0.2393 0 0
-  ); /* FIXED: Matched to border for consistent visibility */
-  --ring: oklch(0.5999 0 0);
+  --border: oklch(0.28 0 0);
+  --input: oklch(0.28 0 0);
+  --ring: oklch(0.58 0 0);
 
   --chart-1: oklch(0.8088 0.1699 75.2344);
   --chart-2: oklch(0.5811 0.21 260.8318);
@@ -188,21 +113,15 @@
   --chart-4: oklch(0.4386 0 0);
   --chart-5: oklch(0.9189 0 0);
 
-  --sidebar: oklch(
-    0.1221 0 0
-  ); /* darker than bg — clear separation like Linear */
-  --sidebar-foreground: oklch(0.9702 0 0);
-  --sidebar-primary: oklch(0.9702 0 0);
-  --sidebar-primary-foreground: oklch(0.1344 0 0);
-  --sidebar-accent: oklch(0.2891 0 0);
-  --sidebar-accent-foreground: oklch(0.9702 0 0);
-  --sidebar-border: oklch(0.2393 0 0);
-  --sidebar-ring: oklch(0.5999 0 0);
+  --sidebar: oklch(0.13 0 0);
+  --sidebar-foreground: oklch(0.95 0 0);
+  --sidebar-primary: oklch(0.95 0 0);
+  --sidebar-primary-foreground: oklch(0.155 0 0);
+  --sidebar-accent: oklch(0.275 0 0);
+  --sidebar-accent-foreground: oklch(0.95 0 0);
+  --sidebar-border: oklch(0.28 0 0);
+  --sidebar-ring: oklch(0.58 0 0);
 
-  /* =====================
-     DARK MODE SHADOWS
-     Stronger opacity — dark surfaces need more depth contrast
-     ===================== */
   --shadow-2xs: 0px 1px 2px 0px hsl(0 0% 0% / 0.2);
   --shadow-xs: 0px 1px 2px 0px hsl(0 0% 0% / 0.25);
   --shadow-sm:
@@ -218,10 +137,6 @@
   --shadow-2xl: 0px 25px 50px -12px hsl(0 0% 0% / 0.5);
 }
 
-/* =====================
-   THEME MAPPING
-   Maps CSS variables to Tailwind color utilities
-   ===================== */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -260,7 +175,6 @@
   --font-mono: var(--font-mono);
   --font-serif: var(--font-serif);
 
-  /* Radius scale — use smaller values for nested elements */
   --radius-xs: var(--radius-xs);
   --radius-sm: var(--radius-sm);
   --radius-md: var(--radius-md);
@@ -279,9 +193,6 @@
   --shadow-2xl: var(--shadow-2xl);
 }
 
-/* =====================
-   BASE STYLES
-   ===================== */
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -289,26 +200,24 @@
 
   body {
     @apply bg-background text-foreground;
-    /* Smooth dark/light mode transition */
     transition:
       background-color 0.2s ease,
       color 0.2s ease;
-    /* Better font rendering */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Smooth scrolling */
   html {
     scroll-behavior: smooth;
   }
 
-  /* Text selection — subtle grey instead of browser default blue */
-  /* ::selection {
-    background-color: oklch(0.35 0 0 / 0.15);
-    color: var(--foreground);
-  } */
   ::selection {
-    @apply bg-primary text-primary-foreground;
+    background-color: oklch(0.2 0 0);
+    color: var(--primary-foreground);
+  }
+
+  .dark ::selection {
+    background-color: oklch(0.95 0 0);
+    color: var(--primary-foreground);
   }
 }
