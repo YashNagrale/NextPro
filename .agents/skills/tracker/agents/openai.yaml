@@ -1,0 +1,4 @@
+interface:
+  display_name: "Tracker"
+  short_description: "Install Hellyeah analytics into your web app"
+  default_prompt: "Use $tracker to install Hellyeah analytics in this project."

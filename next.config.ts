@@ -15,6 +15,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         port: "",
       },
+      {
+        hostname: "shiny-pigeon-737.convex.cloud",
+        protocol: "https",
+      },
     ],
   },
 };
