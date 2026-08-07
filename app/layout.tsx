@@ -53,7 +53,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
-        <Analytics websiteId="019f6eca-9d26-7000-92a5-3bd4646835ed" />
+        {/* <Analytics websiteId="019f6eca-9d26-7000-92a5-3bd4646835ed" /> */}
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

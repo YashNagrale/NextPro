@@ -29,67 +29,67 @@ import z from "zod";
 import { cv, track } from "@hellyeah/x-ray";
 
 export default function CreateRoute() {
-  // useEffect(() => {
-  //   track(cv.leadSubmit, {
-  //     source: "blog_view",
-  //   });
-  // }, []);
-  useEffect(() => {
-    // Page journey
-    track("landing_viewed", {
-      source: "direct",
-    });
+  //   // useEffect(() => {
+  //   //   track(cv.leadSubmit, {
+  //   //     source: "blog_view",
+  //   //   });
+  //   // }, []);
+  //   useEffect(() => {
+  //     // Page journey
+  //     track("landing_viewed", {
+  //       source: "direct",
+  //     });
 
-    track("pricing_viewed", {
-      plan: "pro",
-    });
+  //     track("pricing_viewed", {
+  //       plan: "pro",
+  //     });
 
-    track("docs_viewed", {
-      section: "installation",
-    });
+  //     track("docs_viewed", {
+  //       section: "installation",
+  //     });
 
-    track("component_previewed", {
-      component: "button",
-    });
+  //     track("component_previewed", {
+  //       component: "button",
+  //     });
 
-    track("template_opened", {
-      template: "dashboard",
-    });
+  //     track("template_opened", {
+  //       template: "dashboard",
+  //     });
 
-    // Conversions
-    track(cv.leadSubmit, {
-      plan: "starter",
-      source: "blog",
-      campaign: "nextpro_launch",
-    });
+  //     // Conversions
+  //     track(cv.leadSubmit, {
+  //       plan: "starter",
+  //       source: "blog",
+  //       campaign: "nextpro_launch",
+  //     });
 
-    track(cv.leadSubmit, {
-      plan: "pro",
-      source: "pricing_page",
-      campaign: "nextpro_launch",
-    });
+  //     track(cv.leadSubmit, {
+  //       plan: "pro",
+  //       source: "pricing_page",
+  //       campaign: "nextpro_launch",
+  //     });
 
-    track(cv.purchase, {
-      revenue: 19.99,
-      currency: "USD",
-      plan: "starter",
-      billing_cycle: "monthly",
-    });
+  //     track(cv.purchase, {
+  //       revenue: 19.99,
+  //       currency: "USD",
+  //       plan: "starter",
+  //       billing_cycle: "monthly",
+  //     });
 
-    track(cv.purchase, {
-      revenue: 49.99,
-      currency: "USD",
-      plan: "pro",
-      billing_cycle: "monthly",
-    });
+  //     track(cv.purchase, {
+  //       revenue: 49.99,
+  //       currency: "USD",
+  //       plan: "pro",
+  //       billing_cycle: "monthly",
+  //     });
 
-    track(cv.purchase, {
-      revenue: 99.99,
-      currency: "USD",
-      plan: "pro",
-      billing_cycle: "yearly",
-    });
-  }, []);
+  //     track(cv.purchase, {
+  //       revenue: 99.99,
+  //       currency: "USD",
+  //       plan: "pro",
+  //       billing_cycle: "yearly",
+  //     });
+  //   }, []);
 
   const [isPending, startTransition] = useTransition();
   const form = useForm({
