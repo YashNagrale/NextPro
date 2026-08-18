@@ -24,6 +24,7 @@ import { useTransition } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
+import { cv, track } from "@hellyeah/x-ray";
 
 export default function SignUpPage() {
   const router = useRouter();
@@ -48,6 +49,7 @@ export default function SignUpPage() {
 
         fetchOptions: {
           onSuccess: () => {
+            track(cv.registrationComplete, { method: "email_password" });
             toast.success("Account created successfully");
             // router.push("/");
             window.location.href = "/";
