@@ -1,4 +1,4 @@
-"use server";
+// "use server";
 
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Figtree } from "next/font/google";
@@ -8,15 +8,15 @@ import { ThemeProvider } from "@/components/web/theme-provider";
 import { ConvexClientProvider } from "./ConvexClientProvider";
 import { Toaster } from "@/components/ui/sonner";
 import { Analytics } from "@hellyeah/x-ray/next";
-import { cv, track, identify } from "@hellyeah/x-ray";
+// import { cv, track, identify } from "@hellyeah/x-ray";
 
-track(cv.leadSubmit, {
-  plan: "pro",
-});
-track(cv.purchase, {
-  revenue: 49.99,
-  currency: "USD",
-});
+// track(cv.leadSubmit, {
+//   plan: "pro",
+// });
+// track(cv.purchase, {
+//   revenue: 49.99,
+//   currency: "USD",
+// });
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const geistSans = Geist({
