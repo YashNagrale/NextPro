@@ -21,12 +21,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { Spinner } from "@/components/web/Spinner";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Search, Upload } from "lucide-react";
-import { useEffect, useTransition } from "react";
+import { useTransition } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
+import { useRouter } from "next/navigation";
 
-import { cv, track } from "@hellyeah/x-ray";
+import { track } from "@hellyeah/x-ray";
 
 export default function CreateRoute() {
   //   // useEffect(() => {
@@ -91,6 +92,7 @@ export default function CreateRoute() {
   //     });
   //   }, []);
 
+  const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const form = useForm({
     resolver: zodResolver(postSchema),
@@ -103,9 +105,15 @@ export default function CreateRoute() {
 
   function onSubmit(values: z.infer<typeof postSchema>) {
     startTransition(async () => {
-      console.log("server action from client side");
-      await createBlogAction(values);
+      const result = await createBlogAction(values);
+      if (result?.error) {
+        toast.error(result.error);
+        return;
+      }
+
+      track("post_created", { source: "create_post" });
       toast.success("Post created successfully");
+      router.push("/blog");
     });
   }
 

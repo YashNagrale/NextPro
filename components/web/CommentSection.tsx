@@ -18,6 +18,7 @@ import { useTransition } from "react";
 import { Spinner } from "./Spinner";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Separator } from "../ui/separator";
+import { track } from "@hellyeah/x-ray";
 
 export function CommentSection(props: {
   preloadedComments: Preloaded<typeof api.comments.getCommentsByPostsId>;
@@ -39,6 +40,7 @@ export function CommentSection(props: {
     startTransition(async () => {
       try {
         await createComment(data);
+        track("comment_created", { postId: data.postId });
         form.reset();
         toast.success("Comment posted");
       } catch {
