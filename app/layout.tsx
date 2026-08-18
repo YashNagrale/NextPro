@@ -1,4 +1,4 @@
-// "use server";
+"use server";
 
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Figtree } from "next/font/google";
