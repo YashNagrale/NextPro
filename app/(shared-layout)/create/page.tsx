@@ -21,76 +21,76 @@ import { Textarea } from "@/components/ui/textarea";
 import { Spinner } from "@/components/web/Spinner";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Search, Upload } from "lucide-react";
-import { useTransition } from "react";
+import { useEffect, useTransition } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import z from "zod";
 import { useRouter } from "next/navigation";
 
-import { track } from "@hellyeah/x-ray";
+import { cv, track } from "@hellyeah/x-ray";
 
 export default function CreateRoute() {
-  //   // useEffect(() => {
-  //   //   track(cv.leadSubmit, {
-  //   //     source: "blog_view",
-  //   //   });
-  //   // }, []);
-  //   useEffect(() => {
-  //     // Page journey
-  //     track("landing_viewed", {
-  //       source: "direct",
-  //     });
+  // useEffect(() => {
+  //   track(cv.leadSubmit, {
+  //     source: "blog_view",
+  //   });
+  // }, []);
+  useEffect(() => {
+    // Page journey
+    track("landing_viewed", {
+      source: "direct",
+    });
 
-  //     track("pricing_viewed", {
-  //       plan: "pro",
-  //     });
+    track("pricing_viewed", {
+      plan: "pro",
+    });
 
-  //     track("docs_viewed", {
-  //       section: "installation",
-  //     });
+    track("docs_viewed", {
+      section: "installation",
+    });
 
-  //     track("component_previewed", {
-  //       component: "button",
-  //     });
+    track("component_previewed", {
+      component: "button",
+    });
 
-  //     track("template_opened", {
-  //       template: "dashboard",
-  //     });
+    track("template_opened", {
+      template: "dashboard",
+    });
 
-  //     // Conversions
-  //     track(cv.leadSubmit, {
-  //       plan: "starter",
-  //       source: "blog",
-  //       campaign: "nextpro_launch",
-  //     });
+    // Conversions
+    track(cv.leadSubmit, {
+      plan: "starter",
+      source: "blog",
+      campaign: "nextpro_launch",
+    });
 
-  //     track(cv.leadSubmit, {
-  //       plan: "pro",
-  //       source: "pricing_page",
-  //       campaign: "nextpro_launch",
-  //     });
+    track(cv.leadSubmit, {
+      plan: "pro",
+      source: "pricing_page",
+      campaign: "nextpro_launch",
+    });
 
-  //     track(cv.purchase, {
-  //       revenue: 19.99,
-  //       currency: "USD",
-  //       plan: "starter",
-  //       billing_cycle: "monthly",
-  //     });
+    track(cv.purchase, {
+      revenue: 19.99,
+      currency: "USD",
+      plan: "starter",
+      billing_cycle: "monthly",
+    });
 
-  //     track(cv.purchase, {
-  //       revenue: 49.99,
-  //       currency: "USD",
-  //       plan: "pro",
-  //       billing_cycle: "monthly",
-  //     });
+    track(cv.purchase, {
+      revenue: 49.99,
+      currency: "USD",
+      plan: "pro",
+      billing_cycle: "monthly",
+    });
 
-  //     track(cv.purchase, {
-  //       revenue: 99.99,
-  //       currency: "USD",
-  //       plan: "pro",
-  //       billing_cycle: "yearly",
-  //     });
-  //   }, []);
+    track(cv.purchase, {
+      revenue: 99.99,
+      currency: "USD",
+      plan: "pro",
+      billing_cycle: "yearly",
+    });
+  }, []);
 
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
